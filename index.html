@@ -86,34 +86,11 @@
             margin-top: 20px;
         }
 
-        /* Tooltip styling */
-        .tooltip {
-            position: relative;
-            display: inline-block;
-            cursor: pointer;
-            color: #0056b3; /* Tooltip icon color */
-        }
-
-        .tooltip .tooltiptext {
-            visibility: hidden;
-            width: 150px;
-            background-color: #333;
-            color: #fff;
-            text-align: center;
-            border-radius: 5px;
-            padding: 5px;
-            position: absolute;
-            z-index: 1;
-            bottom: 100%; /* Position above the tooltip */
-            left: 50%;
-            margin-left: -75px; /* Center the tooltip */
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-
-        .tooltip:hover .tooltiptext {
-            visibility: visible;
-            opacity: 1;
+        /* Star icon styling */
+        .star-icon {
+            color: gold;
+            font-size: 24px;
+            margin-top: 5px; /* Space between email input and star */
         }
 
     </style>
@@ -151,11 +128,9 @@
                 <h2>Personal Information</h2>
                 <label for="email">Email:</label>
                 <input type="email" id="email" placeholder="Enter your email" required>
-                
-                <!-- Tooltip for Email input -->
-                <span class="tooltip">?
-                    <span class="tooltiptext">Please enter a valid email address.</span>
-                </span>
+
+                <!-- Gold star icon indicating importance -->
+                <span class="star-icon">&#9733;</span> <!-- HTML entity for a star -->
 
                 <label for="firstName">First Name:</label>
                 <input type="text" id="firstName" placeholder="Enter your first name" required>
