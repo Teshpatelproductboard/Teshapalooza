@@ -87,7 +87,7 @@
         }
     </style>
 
-    <!-- Pendo Script - Inserted here inside the <head> -->
+    <!-- Pendo Script -->
     <script>
         (function(apiKey){
             (function(p,e,n,d,o){var v,w,x,y,z;o=p[d]=p[d]||{};o._q=o._q||[];
@@ -203,6 +203,21 @@
             accountForm.style.display = 'none'; // Hide form after submission
         });
         
-    </script>
-</body>
-</html>
+        // This function creates visitors and accounts in Pendo
+        // Add your real visitor and account values here, replace <visitor-id-goes-here> and <account-id-goes-here>
+        if (window.pendo) {
+            pendo.initialize({
+                visitor: {
+                    id: 'visitor-id-value', // Replace with actual visitor ID
+                    // email: 'visitor@example.com',  // Optional fields
+                    // full_name: 'Visitor Name',      // Optional
+                    // role: 'Attendee'               // Optional
+                },
+                account: {
+                    id: 'account-id-value', // Replace with actual account ID
+                    // name: 'Account Name',          // Optional
+                    // is_paying: true,               // Optional
+                    // monthly_value: 500,            // Optional
+                    // planLevel: 'Premium',          // Optional
+                    // planPrice: 1000,               // Optional
+                    // creationDate: '2022-01-01'
