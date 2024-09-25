@@ -70,6 +70,20 @@
     </div>
 
     <script>
+        // Pendo initialization function
+        function initializePendo(visitorId, accountId) {
+            pendo.initialize({
+                visitor: {
+                    id: visitorId, // Using email as visitor ID
+                    email: visitorId, // Email is recommended for feedback
+                    full_name: `${document.getElementById('firstName').value} ${document.getElementById('lastName').value}` // Full name
+                },
+                account: {
+                    id: accountId // Use a placeholder or dynamic account ID here
+                }
+            });
+        }
+
         // Handle login form submission
         document.getElementById('loginForm').addEventListener('submit', function(event) {
             event.preventDefault(); // Prevent default form submission
@@ -81,13 +95,30 @@
 
             // Simulate authentication (In real-world applications, you would send these to your server)
             if (firstName && lastName && email) {
-                // Simulate successful login by redirecting to the main web page
+                // Simulate successful login
                 localStorage.setItem('user', JSON.stringify({ firstName, lastName, email })); // Store user data
+
+                // Initialize Pendo with user data before redirecting
+                initializePendo(email, 'example-account-id'); // Replace with actual account ID
+
                 window.location.href = 'main.html'; // Redirect to main page
             } else {
                 alert('Please fill in all fields');
             }
         });
     </script>
+
+    <!-- Pendo Script -->
+    <script>
+        (function(apiKey){
+            (function(p,e,n,d,o){var v,w,x,y,z;o=p[d]=p[d]||{};o._q=o._q||[];
+            v=['initialize','identify','updateOptions','pageLoad','track'];for(w=0,x=v.length;w<x;++w)(function(m){
+                o[m]=o[m]||function(){o._q[m===v[0]?'unshift':'push']([m].concat([].slice.call(arguments,0)));};})(v[w]);
+                y=e.createElement(n);y.async=!0;y.src='https://cdn.pendo.io/agent/static/'+apiKey+'/pendo.js';
+                z=e.getElementsByTagName(n)[0];z.parentNode.insertBefore(y,z);})(window,document,'script','pendo');
+        })('b1899687-74af-4130-70cc-fedbd04cefef');  // Replace with your actual Pendo API key
+    </script>
+    <!-- End of Pendo Script -->
+
 </body>
 </html>
