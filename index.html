@@ -200,52 +200,18 @@
             }
         });
 
-        // Handle form submission for name form (Personal Information)
+        // Handle form submission for name form (example)
         nameForm.addEventListener('submit', function(event) {
             event.preventDefault();
-
-            const email = document.getElementById('email').value;
-            const firstName = document.getElementById('firstName').value;
-            const lastName = document.getElementById('lastName').value;
-
-            alert(`Submitted: ${email}, ${firstName}, ${lastName}`);
-            
-            // Initialize Pendo with visitor info
-            if (window.pendo) {
-                pendo.initialize({
-                    visitor: {
-                        id: email,  // Using email as the visitor ID (required)
-                        email: email,
-                        full_name: `${firstName} ${lastName}`
-                    },
-                    account: {}  // No account information for now
-                });
-            }
-
+            alert(`Submitted: ${document.getElementById('email').value}, ${document.getElementById('firstName').value}, ${document.getElementById('lastName').value}`);
             nameForm.reset();
             nameForm.style.display = 'none'; // Hide form after submission
         });
 
-        // Handle form submission for account form (Account Information)
+        // Handle form submission for account form (example)
         accountForm.addEventListener('submit', function(event) {
             event.preventDefault();
-
-            const accountName = document.getElementById('accountName').value;
-            const payingStatus = document.getElementById('payingStatus').value;
-
-            alert(`Submitted: ${accountName}, ${payingStatus}`);
-
-            // Initialize Pendo with account info
-            if (window.pendo) {
-                pendo.initialize({
-                    visitor: {},  // No visitor-specific updates in this form
-                    account: {
-                        id: accountName,  // Using account name as the account ID (required)
-                        is_paying: payingStatus === 'Paying'  // Convert to Boolean
-                    }
-                });
-            }
-
+            alert(`Submitted: ${document.getElementById('accountName').value}, ${document.getElementById('payingStatus').value}`);
             accountForm.reset();
             accountForm.style.display = 'none'; // Hide form after submission
         });
