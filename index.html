@@ -105,4 +105,104 @@
     <div class="container">
         <h1>Do you want to attend Teshapalooza 2024?</h1>
         
-        <!--
+        <!-- Placeholder image -->
+        <img src="https://cf.ltkcdn.net/party/images/std/334307-800x533-western-dancing-474986368.webp" alt="Teshapalooza 2024">
+
+        <!-- Button to open the Email and Name form -->
+        <button id="openNameFormButton">Enter Email, First Name, and Last Name</button>
+        
+        <!-- Button to open the Account Information form -->
+        <button id="openAccountFormButton">Enter Account Name and Paying Status</button>
+
+        <!-- Form for collecting Email, First Name, and Last Name -->
+        <div class="form-section">
+            <form id="nameForm">
+                <h2>Personal Information</h2>
+                <label for="email">Email:</label>
+                <input type="email" id="email" placeholder="Enter your email" required>
+
+                <label for="firstName">First Name:</label>
+                <input type="text" id="firstName" placeholder="Enter your first name" required>
+
+                <label for="lastName">Last Name:</label>
+                <input type="text" id="lastName" placeholder="Enter your last name" required>
+
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+
+        <!-- Form for collecting Account Name and Paying Status -->
+        <div class="form-section">
+            <form id="accountForm">
+                <h2>Account Information</h2>
+                <label for="accountName">Account Name:</label>
+                <input type="text" id="accountName" placeholder="Enter your account name" required>
+
+                <label for="payingStatus">Paying Status:</label>
+                <select id="payingStatus" required>
+                    <option value="">-- Select Paying Status --</option>
+                    <option value="Paying">Paying</option>
+                    <option value="Non-Paying">Non-Paying</option>
+                </select>
+
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript to show and hide forms when buttons are clicked
+
+        // Get the elements
+        const openNameFormButton = document.getElementById('openNameFormButton');
+        const openAccountFormButton = document.getElementById('openAccountFormButton');
+        const nameForm = document.getElementById('nameForm');
+        const accountForm = document.getElementById('accountForm');
+
+        // Show the Name form when the first button is clicked
+        openNameFormButton.addEventListener('click', function() {
+            nameForm.style.display = 'block';
+            accountForm.style.display = 'none'; // Hide other form if open
+
+            // Track the feature usage with Pendo for the Name form button
+            if (window.pendo) {
+                window.pendo.track('Open Name Form Button Clicked', {
+                    buttonId: 'openNameFormButton',
+                    action: 'clicked'
+                });
+            }
+        });
+
+        // Show the Account form when the second button is clicked
+        openAccountFormButton.addEventListener('click', function() {
+            accountForm.style.display = 'block';
+            nameForm.style.display = 'none'; // Hide other form if open
+
+            // Track the feature usage with Pendo for the Account form button
+            if (window.pendo) {
+                window.pendo.track('Open Account Form Button Clicked', {
+                    buttonId: 'openAccountFormButton',
+                    action: 'clicked'
+                });
+            }
+        });
+
+        // Handle form submission for name form (example)
+        nameForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            alert(`Submitted: ${document.getElementById('email').value}, ${document.getElementById('firstName').value}, ${document.getElementById('lastName').value}`);
+            nameForm.reset();
+            nameForm.style.display = 'none'; // Hide form after submission
+        });
+
+        // Handle form submission for account form (example)
+        accountForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            alert(`Submitted: ${document.getElementById('accountName').value}, ${document.getElementById('payingStatus').value}`);
+            accountForm.reset();
+            accountForm.style.display = 'none'; // Hide form after submission
+        });
+        
+    </script>
+</body>
+</html>
