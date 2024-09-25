@@ -207,6 +207,11 @@
                     },
                     account: {}  // No account information for now
                 });
+                console.log('Pendo initialized with visitor data:', {
+                    id: email,
+                    email: email,
+                    full_name: `${firstName} ${lastName}`
+                });
             }
 
             nameForm.reset();
@@ -222,14 +227,17 @@
 
             alert(`Submitted: ${accountName}, ${payingStatus}`);
 
-            // Initialize Pendo with account info
+            // Update Pendo with account info
             if (window.pendo) {
-                pendo.initialize({
-                    visitor: {},  // No visitor-specific updates in this form
+                pendo.updateOptions({
                     account: {
                         id: accountName,  // Using account name as the account ID (required)
                         is_paying: payingStatus === 'Paying'  // Convert to Boolean
                     }
+                });
+                console.log('Pendo updated with account data:', {
+                    id: accountName,
+                    is_paying: payingStatus === 'Paying'
                 });
             }
 
