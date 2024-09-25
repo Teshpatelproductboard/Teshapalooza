@@ -90,7 +90,9 @@
         .star-icon {
             color: gold;
             font-size: 24px;
-            margin-top: 5px; /* Space between email input and star */
+            margin-top: 10px; /* Space between image and star */
+            display: block; /* Ensure it's on its own line */
+            text-align: center; /* Center the star */
         }
 
     </style>
@@ -116,6 +118,9 @@
         <!-- Placeholder image -->
         <img src="https://cf.ltkcdn.net/party/images/std/334307-800x533-western-dancing-474986368.webp" alt="Teshapalooza 2024">
 
+        <!-- Gold star icon indicating importance -->
+        <span class="star-icon">&#9733;</span> <!-- HTML entity for a star -->
+
         <!-- Button to open the Email and Name form -->
         <button id="openNameFormButton">Enter Email, First Name, and Last Name</button>
         
@@ -128,9 +133,6 @@
                 <h2>Personal Information</h2>
                 <label for="email">Email:</label>
                 <input type="email" id="email" placeholder="Enter your email" required>
-
-                <!-- Gold star icon indicating importance -->
-                <span class="star-icon">&#9733;</span> <!-- HTML entity for a star -->
 
                 <label for="firstName">First Name:</label>
                 <input type="text" id="firstName" placeholder="Enter your first name" required>
